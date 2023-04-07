@@ -14,4 +14,7 @@ suggest-api.yaml
 
 # 访问端口
 http://127.0.0.1:8888/api/suggest?keyword=
+
+# 主要业务代码位置
+cd suggest\internal\logic
 ```
