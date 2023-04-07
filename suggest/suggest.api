@@ -1,0 +1,24 @@
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+service suggest-api {
+	@handler Suggest
+	get /api/suggest(SuggestRequest) returns (SuggestResponse)
+}
+
+type SuggestRequest {
+	Keyword string `form:"keyword"`
+}
+
+type SuggestResponse {
+	RelatedWords []*Keyword `json:"related_words"`
+}
+
+type Keyword {
+	Content string `json:"content"`
+}
