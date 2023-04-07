@@ -47,12 +47,12 @@ func (l *SuggestLogic) Suggest(req *types.SuggestRequest) (resp *types.SuggestRe
 		}
 		//判断是否进行拼音匹配
 		if strTempChinese != "" {
-			err = l.svcCtx.Engine.Table("keywords").Limit(10, 0).Where("content like ?", strTempChinese+"%").Find(&kwList)
+			err = l.svcCtx.Engine.Table("keywords").Where("content like ?", strTempChinese+"%").Limit(10, 0).Find(&kwList)
 			if err != nil {
 				return nil, err
 			}
 		} else {
-			err = l.svcCtx.Engine.Table("keywords").Limit(10, 0).Where("pinyin like ?", strTempPinyin+"%").Find(&kwList)
+			err = l.svcCtx.Engine.Table("keywords").Where("pinyin like ?", strTempPinyin+"%").Limit(10, 0).Find(&kwList)
 			if err != nil {
 				return nil, err
 			}
